@@ -1,6 +1,5 @@
 from django.db import models
-from urllib.request import urlretrieve
-from urllib.request import urlopen
+import urllib2
 from bs4 import BeautifulSoup
 from django.core.mail import send_mail
 import smtplib
@@ -19,7 +18,7 @@ class Product(models.Model):
 
 	def check_product(self):
 		try:
-			html = urlopen(self.url)
+			html = urllib2.urlopen(self.url)
 		except HTTPError as e:
 			print(e)
 		else:
