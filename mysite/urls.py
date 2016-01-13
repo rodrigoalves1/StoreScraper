@@ -20,3 +20,9 @@ urlpatterns = [
 	url(r'^myscraper/', include('myscraper.urls')),
 	url(r'^admin/', admin.site.urls),
 ]
+
+urlpatterns += patterns('',
+        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.STATIC_ROOT,
+        }),
+    )

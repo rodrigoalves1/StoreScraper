@@ -1,5 +1,8 @@
 from django.db import models
-import urllib2
+try:
+    import urllib.request as urllib2
+except ImportError:
+    import urllib2
 from bs4 import BeautifulSoup
 from django.core.mail import send_mail
 import smtplib
