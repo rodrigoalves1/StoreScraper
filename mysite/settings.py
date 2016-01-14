@@ -129,4 +129,5 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_PATH, 'staticfiles')
 ADMIN_MEDIA_PREFIX = '/static/admin/'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
