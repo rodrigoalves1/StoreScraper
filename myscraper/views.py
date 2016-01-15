@@ -18,6 +18,10 @@ def index(request):
 			thread.daemon = True
 			thread.setName("Kanui")
 			thread.start()
+			thread = threading.Thread(target=keep_it_on)
+			thread.daemon = True
+			thread.setName("KeepOn")
+			thread.start()
 			return HttpResponse("Now Scrapping your products at kanui.com.br")
 		else:
 			return HttpResponse("Kanui scrapper already running")
@@ -25,7 +29,9 @@ def index(request):
 	except:
 		return HttpResponse("An error occurred, please contact the site administrator")
 	
-
+def keep_it_on():
+	while True:
+		pass
 def start_scraping():
 	count = 0 
 	while True:
