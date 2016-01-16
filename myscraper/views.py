@@ -37,7 +37,7 @@ def index(request):
 def keep_it_on():
 	while True:
 		print("acorda diabo")
-		html = urlopen("https://kanuiscraper.herokuapp.com/myscraper/")
+		html = urllib2.urlopen("https://kanuiscraper.herokuapp.com/myscraper/")
 		bsObj = BeautifulSoup(html)
 		time.sleep(100)
 def start_scraping():
