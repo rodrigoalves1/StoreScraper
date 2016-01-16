@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from myscraper.models import Product
+try:
+    import urllib.request as urllib2
+except ImportError:
+    import urllib2
+from bs4 import BeautifulSoup
 import time
 import threading
 
@@ -31,7 +36,10 @@ def index(request):
 	
 def keep_it_on():
 	while True:
-		pass
+		print("acorda diabo")
+		html = urlopen("https://kanuiscraper.herokuapp.com/myscraper/")
+		bsObj = BeautifulSoup(html)
+		time.sleep(100)
 def start_scraping():
 	count = 0 
 	while True:
