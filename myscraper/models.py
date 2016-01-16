@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 from django.core.mail import send_mail
 import smtplib
 import re
+
 # Create your models here.
 class Product(models.Model):
 	url = models.CharField(max_length=300);
@@ -22,7 +23,7 @@ class Product(models.Model):
 	def check_product(self):
 		try:
 			html = urllib2.urlopen(self.url)
-		except HTTPError as e:
+		except urllib2.HTTPError as e:
 			print(e)
 		else:
 			if html is None:
