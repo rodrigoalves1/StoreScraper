@@ -43,4 +43,4 @@ def start_scraping():
 				print(link)
 				link.check_product()
 			count += 1
-			time.sleep(3600)
+			time.sleep(1800)
