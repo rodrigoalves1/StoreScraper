@@ -48,7 +48,15 @@ def start_scraping():
 			print(count)
 			print("\n")
 			for link in list:
-				print(link)
-				link.check_product()
+				#print(link.price)
+				#print(link.size)
+				if link.status == 'e':
+					print(link)
+					if link.store == 'ka':
+						link.kanui_check_product()
+					elif link.store == 'ns':
+						link.netshoes_check_product()
+					elif link.store == 'ce':
+						link.centauro_check_product()
 			count += 1
 			time.sleep(1800)
