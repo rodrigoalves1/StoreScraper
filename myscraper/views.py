@@ -36,7 +36,7 @@ def index(request):
 	
 def keep_it_on():
 	while True:
-		print("acorda diabo")
+		print("wake up")
 		html = urllib2.urlopen("https://kanuiscraper.herokuapp.com/myscraper/")
 		bsObj = BeautifulSoup(html)
 		time.sleep(100)
@@ -44,7 +44,7 @@ def start_scraping():
 	count = 0 
 	while True:
 			list = Product.objects.all()
-			print("iniciou busca kanui")
+			print("go search")
 			print(count)
 			print("\n")
 			for link in list:

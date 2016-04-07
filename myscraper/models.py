@@ -21,6 +21,8 @@ STORE_CHOICES = (
 	('ce', 'Centauro'),
 )
 
+tto = 'mailto'
+ffrom = 'mailfrom'
 
 class Product(models.Model):
 	url = models.CharField(max_length=300);
@@ -54,13 +56,15 @@ class Product(models.Model):
 					if self.size != "":
 						ans = self.kanui_check_size(bsObj)
 						if ans:
-							send_mail("Product in size available: "+self.kanui_get_product_name(),"The following product, in the desired size, is now available \n" + self.url,"rodrigo.alves182@gmail.com", ["raan@cin.ufpe.br"],fail_silently=False );
+							send_mail("Product in size available: "+self.kanui_get_product_name(),"The following product, in the desired size, is now available \n" + self.url,ff
+								rom, tto,fail_silently=False );
 							self.status = 'd'
 							self.save()
 					elif self.price is not None:
 						self.kanui_check_price(bsObj)
 					else:
-						send_mail("Product available: "+self.kanui_get_product_name(),"The following product is now available \n" + self.url,"rodrigo.alves182@gmail.com", ["raan@cin.ufpe.br"],fail_silently=False );				
+						send_mail("Product available: "+self.kanui_get_product_name(),"The following product is now available \n" + self.url,ff
+							rom, tto,fail_silently=False );				
 						self.status = 'd'
 						self.save()
 
@@ -78,7 +82,8 @@ class Product(models.Model):
 	def kanui_check_price(self,bsObj):
 		price = bsObj.find("span",{"property":re.compile("^gr:hasCurrencyValue")})
 		if float(price.get_text().strip().replace(",",".")) < self.price:
-			send_mail("Lower price found for product: "+self.kanui_get_product_name(),"The following product: \n" + self.url+"\n has now a lower price.","rodrigo.alves182@gmail.com", ["raan@cin.ufpe.br"],fail_silently=False );
+			send_mail("Lower price found for product: "+self.kanui_get_product_name(),"The following product: \n" + self.url+"\n has now a lower price.",ff
+				rom, tto,fail_silently=False );
 			self.price = float(price.get_text().strip().replace(",","."))
 			self.save()
 
@@ -103,14 +108,16 @@ class Product(models.Model):
 						ans = self.netshoes_check_size(bsObj)
 						print(ans)
 						if ans:
-							send_mail("Product in size available: "+self.netshoes_get_product_name(),"The following product, in the desired size, is now available \n" + self.url,"rodrigo.alves182@gmail.com", ["raan@cin.ufpe.br"],fail_silently=False );
+							send_mail("Product in size available: "+self.netshoes_get_product_name(),"The following product, in the desired size, is now available \n" + self.url,ff
+								rom, tto,fail_silently=False );
 							self.status = 'd'
 							self.save()
 					elif self.price is not None:
 						#print("entrou2")
 						self.netshoes_check_price(bsObj)
 					else:
-						send_mail("Product available: "+self.netshoes_get_product_name(),"The following product is now available \n" + self.url,"rodrigo.alves182@gmail.com", ["raan@cin.ufpe.br"],fail_silently=False );				
+						send_mail("Product available: "+self.netshoes_get_product_name(),"The following product is now available \n" + self.url,ff
+							rom, tto,fail_silently=False );				
 						self.status = 'd'
 						self.save()
 
@@ -130,7 +137,8 @@ class Product(models.Model):
 		price = bsObj.find("strong",{"class":re.compile("^new-price")})
 		#print(float(price.get_text()[3:].strip().replace(",",".")))
 		if float(price.get_text()[3:].strip().replace(",",".")) < self.price:
-			send_mail("Lower price found for product: "+self.netshoes_get_product_name(),"The following product: \n" + self.url+"\n has now a lower price.","rodrigo.alves182@gmail.com", ["raan@cin.ufpe.br"],fail_silently=False );
+			send_mail("Lower price found for product: "+self.netshoes_get_product_name(),"The following product: \n" + self.url+"\n has now a lower price.",ff
+				rom, tto,fail_silently=False );
 			self.price = float(price.get_text()[3:].strip().replace(",","."))
 			self.save()
 
@@ -163,14 +171,16 @@ class Product(models.Model):
 						ans = self.centauro_check_size(bsObj)
 						print(ans)
 						if ans:
-							send_mail("Product in size available: "+self.centauro_get_product_name(),"The following product, in the desired size, is now available \n" + self.url,"rodrigo.alves182@gmail.com", ["raan@cin.ufpe.br"],fail_silently=False );
+							send_mail("Product in size available: "+self.centauro_get_product_name(),"The following product, in the desired size, is now available \n" + self.url,ff
+								rom, tto,fail_silently=False );
 							self.status = 'd'
 							self.save()
 					elif self.price is not None:
 						#print("entrou2")
 						self.centauro_check_price(bsObj)
 					else:
-						send_mail("Product available: "+self.centauro_get_product_name(),"The following product is now available \n" + self.url,"rodrigo.alves182@gmail.com", ["raan@cin.ufpe.br"],fail_silently=False );				
+						send_mail("Product available: "+self.centauro_get_product_name(),"The following product is now available \n" + self.url,ff
+							rom, tto,fail_silently=False );				
 						self.status = 'd'
 						self.save()
 
@@ -194,7 +204,8 @@ class Product(models.Model):
 		price = bsObj.find("span",{"itemprop":re.compile("^price")})
 		#print(float(price.get_text()[3:].strip().replace(",",".")))
 		if float(price.get_text()[3:].strip().replace(",",".")) < self.price:
-			send_mail("Lower price found for product: "+self.centauro_get_product_name(),"The following product: \n" + self.url+"\n has now a lower price.","rodrigo.alves182@gmail.com", ["raan@cin.ufpe.br"],fail_silently=False );
+			send_mail("Lower price found for product: "+self.centauro_get_product_name(),"The following product: \n" + self.url+"\n has now a lower price.",ff
+				rom, tto,fail_silently=False );
 			self.price = float(price.get_text()[3:].strip().replace(",","."))
 			self.save()
 
