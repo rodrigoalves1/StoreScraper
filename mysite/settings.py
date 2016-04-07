@@ -25,7 +25,7 @@ SECRET_KEY = '1f50^0p^fp^gw&cga%b#4sv1s$pd81#2)y#)ufecr0ote)k8-)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['URL']
+
 
 
 # Application definition
@@ -79,25 +79,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         #'NAME': os.path.join(BASE_DIR, 'db.postgresql'),
-        'NAME': 'myscraper',
-        'USER': 'postgres',
-        'PASSWORD': 'PASS',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
 """
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'NAME',
-        'USER': 'PASS',
-        'PASSWORD': 'PASS',
-        'HOST': 'URL',
-        'PORT': '5432',
-    }
-}
 
 
 # Internationalization
@@ -117,8 +106,8 @@ USE_TZ = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = 'PASS'
+EMAIL_HOST_USER = 'mail'
+EMAIL_HOST_PASSWORD = 'pass'
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
